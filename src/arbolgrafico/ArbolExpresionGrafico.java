@@ -91,7 +91,7 @@ public class ArbolExpresionGrafico extends JPanel
  }
  private void dibujarArbol (Graphics2D g, Nodo n, int puntox, int puntoy, int yoffs)
  {
-     if (null == null)
+     if (n == null)
          return;
      g.setColor(Color.RED);
      Rectangle r = (Rectangle) posicionNodos.get(n);
@@ -102,9 +102,12 @@ public class ArbolExpresionGrafico extends JPanel
      if (puntox != Integer.MAX_VALUE)
          
          g.drawLine(puntox, puntoy, (int)(r.x + r.width/2), r.y);
-         dibujarArbol(g, n.getIzq(), (int)(r.x + r.width/2), r.y + r.height, yoffs);
-         dibujarArbol(g, n.getDer(), (int)(r.x + r.width/2), r.y + r.height, yoffs);
+     
+        dibujarArbol(g, n.getIzq(), (int)(r.x + r.width/2), r.y + r.height, yoffs);
+        dibujarArbol(g, n.getDer(), (int)(r.x + r.width/2), r.y + r.height, yoffs);
  }
+ 
+ 
  public void paint (Graphics g)
  {
      super.paint(g);
