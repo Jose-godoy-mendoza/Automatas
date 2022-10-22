@@ -24,7 +24,6 @@ public class Vistaa extends javax.swing.JFrame {
     public Vistaa()
     {
         initComponents();
-        this.pack();
         this.inicializar(false);
         
     }
@@ -61,6 +60,11 @@ public class Vistaa extends javax.swing.JFrame {
         jPanel2.setOpaque(false);
 
         gramaticaT.setText("Terminal");
+        gramaticaT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gramaticaTActionPerformed(evt);
+            }
+        });
 
         botonInsertar.setText("Insertar");
         botonInsertar.addActionListener(new java.awt.event.ActionListener() {
@@ -104,11 +108,11 @@ public class Vistaa extends javax.swing.JFrame {
         );
         jInternalFrame2Layout.setVerticalGroup(
             jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 238, Short.MAX_VALUE)
+            .addGap(0, 268, Short.MAX_VALUE)
         );
 
         jDesktopPanel.add(jInternalFrame2);
-        jInternalFrame2.setBounds(20, 10, 600, 260);
+        jInternalFrame2.setBounds(20, 0, 600, 290);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -198,25 +202,26 @@ public class Vistaa extends javax.swing.JFrame {
             if (this.simulador.insertar(dato)){
                 JOptionPane.showMessageDialog(null, "El dato fue ingresado correctamente", "...", 1);
                 this.inicializar(true);
-                repintarArbol();
+                complementos();
             }
             }catch (Exception e){
             JOptionPane.showMessageDialog(null, "No se pudo ingresar el dato", "intente de nuevo... ", 0);
         }
     }//GEN-LAST:event_botonInsertarActionPerformed
 
+    private void gramaticaTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gramaticaTActionPerformed
+        // TODO add your handling code here:
+        String salida = this.simulador.darHojas();
+        this.impresion.setText("");
+        this.impresion.setText(salida);
+    }//GEN-LAST:event_gramaticaTActionPerformed
+
     /**
      * @param args the command line arguments
      */
     
     
-    private void gramaticaTActionPerformed (java.awt.event.ActionEvent evt)
-    {
-        String salida = this.simulador.darHojas();
-        this.impresion.setText("");
-        this.impresion.setText(salida);
-    }
-    
+
     public void complementos()
     {
         this.repintarArbol();

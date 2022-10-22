@@ -32,7 +32,6 @@ public class Arbol {
 
     public boolean agregar(int dato)
     {
-
         Nodo nuevo = new Nodo(dato,null,null);
         insertar(nuevo, raiz);
         return true;
@@ -44,12 +43,12 @@ public class Arbol {
             raiz = nuevo;
         }else{
             if (nuevo.getDato() <= pivote.getDato()){ ///sepa ptas
-            if (pivote.getIzq() == null){
-                pivote.setIzq(nuevo);      
-            }else{
-                insertar(nuevo,pivote.getIzq());
-            }
-        } else {
+                if (pivote.getIzq() == null){
+                    pivote.setIzq(nuevo);      
+                }else{
+                    insertar(nuevo,pivote.getIzq());
+                }
+            } else {
                 if(pivote.getDer() == null){
                     pivote.setDer(nuevo);
                 } else{
@@ -90,7 +89,6 @@ public class Arbol {
         if (reco != null){
             if (reco.getIzq() == null && reco.getDer() == null) {
                 cant++;
-
             }
             cantidadNodosHoja(reco.getIzq());
             cantidadNodosHoja(reco.getDer());
@@ -98,7 +96,7 @@ public class Arbol {
     }
 
     //altura del arbol
-    public String retornarAltura(){  //8:22
+    public String retornarAltura(){  
         altura = 0;
         retornarAltura(raiz, 1);
         return "" +altura;
@@ -107,7 +105,7 @@ public class Arbol {
 
     private void retornarAltura(Nodo reco, int nivel){
         if(reco != null){
-            retornarAltura(reco.getIzq(),nivel +1);
+            retornarAltura(reco.getIzq(),nivel + 1);
             if (nivel>altura){
                 altura = nivel;
             }
@@ -141,13 +139,13 @@ public class Arbol {
     private void cambiar(Nodo reco, int nivel){
         if (reco != null) {
             reco.setDato(reco.getDato() * 3);
-            cambiar(reco.getIzq(), nivel +1);
-            cambiar(reco.getDer(),nivel + 1);
+            cambiar(reco.getIzq(), nivel + 1);
+            cambiar(reco.getDer(), nivel + 1);
         }
     }
 
     //imprimir recorrido Izquierda
-       public ArrayList recIzq(){
+    public ArrayList recIzq(){
         ArrayList l=new ArrayList();
         recIzq(raiz,l);
         return l;
@@ -186,7 +184,7 @@ public class Arbol {
     private void getHojas (Nodo r, ArrayList l) {
         if (r !=null){
             if (this.esHoja(r)){
-                l.add(r.getIzq());
+                l.add(r.getDato());
             }
             getHojas(r.getIzq(), l);
             getHojas(r.getDer(), l);
@@ -213,8 +211,8 @@ public class Arbol {
             if (x == null){
                 return null;
             }
-            if ((x.getIzq() != null && x.getIzq().getDato()==(info) || (x.getDer() !=null && x.getDer().getDato()==(info)))){
-                return (x);   //me sobro un parentecis arriba 9:47
+            if ((x.getIzq() != null && x.getIzq().getDato()==(info)) || (x.getDer() !=null && x.getDer().getDato()==(info))){
+                return (x); 
             }
             Nodo y = padre(x.getIzq(), info);
             if (y == null){

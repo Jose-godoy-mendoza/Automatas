@@ -86,9 +86,8 @@ public class ArbolExpresionGrafico extends JPanel
      posicionNodos.put(n,new Rectangle(center - width/2 - 3, top, width + 6, fm.getHeight()));
      calcularPosicion(n.getIzq(), Integer.MAX_VALUE, center - child2child/2, top + fm.getHeight() + parent2child);
      calcularPosicion(n.getDer(), center + child2child/2, Integer.MAX_VALUE, top + fm.getHeight() + parent2child);
-     //13:17
-     
  }
+ 
  private void dibujarArbol (Graphics2D g, Nodo n, int puntox, int puntoy, int yoffs)
  {
      if (n == null)
@@ -100,30 +99,28 @@ public class ArbolExpresionGrafico extends JPanel
      g.drawString(n.getDato()+"", r.x + 3, r.y + yoffs);
      
      if (puntox != Integer.MAX_VALUE)
-         
-         g.drawLine(puntox, puntoy, (int)(r.x + r.width/2), r.y);
-     
-        dibujarArbol(g, n.getIzq(), (int)(r.x + r.width/2), r.y + r.height, yoffs);
-        dibujarArbol(g, n.getDer(), (int)(r.x + r.width/2), r.y + r.height, yoffs);
- }
+     g.drawLine(puntox, puntoy, (int)(r.x + r.width/2), r.y);
+     dibujarArbol(g, n.getIzq(), (int)(r.x + r.width/2), r.y + r.height, yoffs);
+     dibujarArbol(g, n.getDer(), (int)(r.x + r.width/2), r.y + r.height, yoffs);
+ }  
  
  
  public void paint (Graphics g)
  {
      super.paint(g);
-         fm = g.getFontMetrics();
+     fm = g.getFontMetrics();
 
-         if (dirty) 
-         {
-           calcularPosiciones();
-           dirty = false;
-         }
+     if (dirty) 
+     {
+        calcularPosiciones();
+        dirty = false;
+     }
          
-         Graphics2D g2d = (Graphics2D) g;
-         g2d.translate(getWidth() / 2, parent2child);
-         dibujarArbol(g2d, this.miArbol.getRaiz(), Integer.MAX_VALUE, Integer.MAX_VALUE, 
+     Graphics2D g2d = (Graphics2D) g;
+     g2d.translate(getWidth() / 2, parent2child);
+     dibujarArbol(g2d, this.miArbol.getRaiz(), Integer.MAX_VALUE, Integer.MAX_VALUE, 
                   fm.getLeading() + fm.getAscent());
-         fm = null;
+     fm = null;
  }
  
  

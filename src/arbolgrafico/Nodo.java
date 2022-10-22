@@ -14,7 +14,7 @@ public class Nodo {
 private int dato;
 private Nodo izq, der;
 
-public Nodo (int dato,Nodo izq,Nodo der){
+public Nodo (int dato,Nodo izq, Nodo der){
     this.dato = dato;
     this.izq = izq;
     this.der = der;
@@ -36,7 +36,7 @@ public Nodo getDer(){
     return der;
 }
 public void setDer(Nodo der){
-    this.izq = der;
+    this.der = der;
 }
 
 }

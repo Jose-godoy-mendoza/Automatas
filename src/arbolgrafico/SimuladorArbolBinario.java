@@ -41,7 +41,7 @@ public class SimuladorArbolBinario {
      
      public String darPadre(Integer hijo) {
          if (this.miArbol.getRaiz().getDato() == (hijo)){
-         return ("la raiz no tiene padre");
+            return ("la raiz no tiene padre");
          
      }
          Integer padre = this.miArbol.padre(hijo);
@@ -61,6 +61,7 @@ public class SimuladorArbolBinario {
          }
          return (r);
      }
+     
      public String CantidadNodos(){
          return this.miArbol.cantidadNodos();
      }
