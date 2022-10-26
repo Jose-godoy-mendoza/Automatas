@@ -16,7 +16,6 @@ public class Main {
     {
         Scanner s;
         s = new Scanner(System.in);
-        String Cadena;
         int estados=0, transiciones=0;
         
         
@@ -36,6 +35,7 @@ public class Main {
         }
         
         System.out.println("Ingresa la cadena de entrada: ");
+        String Cadena;
         Cadena = s.next();
         String in[] = Cadena.split("");
         System.out.println("Tabla de transiciones: ");
