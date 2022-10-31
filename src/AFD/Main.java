@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DFA;
+package AFD;
 
 import java.util.Scanner;
 
@@ -39,13 +39,13 @@ public class Main {
         Cadena = s.next();
         String in[] = Cadena.split("");
         System.out.println("Tabla de transiciones: ");
-        System.out.println("    0     1");
+        System.out.println("        0     1");
         for(int i=0; i<estados;i++)
         {
-            System.out.println("Estado: "+(i)+" ");
+            System.out.print("Estado: "+(i)+" ");
             for(int j=0; j<transiciones;j++)
             {
-                System.out.println("q"+q[i][j]+" ");
+                System.out.print("q"+q[i][j]+" ");
             }
             System.out.println("");
         }
@@ -81,11 +81,11 @@ public class Main {
         }
         if(actual==fin)
         {
-            System.out.println("Aceptado");
+            System.out.println("Cadena Valida");
         } 
         else
         {
-            System.out.println("No aceptado");
+            System.out.println("La cadena NO ES VALIDA");
         }
     }
 }
